@@ -4,9 +4,12 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native';
+import Animated,{ FadeInDown } from 'react-native-reanimated';
+import { useRouter } from 'expo-router';
 
 
 export default function Index() {
+  const router = useRouter();
   return (
     <View className="flex-1 justify-end">
       <StatusBar style='light'/>
@@ -19,17 +22,18 @@ export default function Index() {
       end={{x:1, y:1}} 
       className="flex justify-end pb-12 space-y-8" 
       >
-        <View className="flex items-center">
+        <Animated.View entering={FadeInDown.delay(500).springify()} className="flex items-center">
             <Text style={{fontSize:hp(5)}} className="text-white font-bold tracking-wide">
                 Best <Text className="text-rose-500">Workouts</Text>
             </Text>
             <Text style={{fontSize:hp(5)}} className="text-white font-bold tracking-wide">
                 For You 
             </Text>
-        </View>
+        </Animated.View>
 
-        <View>
+        <Animated.View entering={FadeInDown.delay(800).springify()}>
             <TouchableOpacity 
+            onPress={()=> router.push('home')}
             style={{height:hp(7), width:wp(80)}} 
             className="bg-rose-500 flex items-center justify-center mx-auto rounded-full border-[2px] border-neutral-200"
             >
@@ -37,7 +41,7 @@ export default function Index() {
                     Get Started
                 </Text>
             </TouchableOpacity>
-        </View>
+        </Animated.View>
       </LinearGradient>
     </View>
   )
