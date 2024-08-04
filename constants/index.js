@@ -1,4 +1,4 @@
-
+export const rapidApiKey = '9cf04739e8msh8609982fa829d0ep123619jsn5f9372a9dfbd';
 
 export const bodyParts = [
 {
@@ -43,3 +43,5 @@ export const bodyParts = [
 },
 
 ]
+
+
